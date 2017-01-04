@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application 1</string>
+    <string name="edit_message">Enter Text</string>
+    <string name="button_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

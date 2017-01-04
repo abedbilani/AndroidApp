@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_display_message"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/stofile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Send To File"/>
+
+        <Button
+            android:id="@+id/savetofile"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onClick"
+            android:text="Send"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_weight="0.10"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/datafromfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fromfile"
+            />
+
+        <Button
+            android:id="@+id/getdata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Get Data"
+            />
+    </LinearLayout>
+</LinearLayout>
