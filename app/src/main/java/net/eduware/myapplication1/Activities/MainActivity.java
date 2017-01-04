@@ -1,10 +1,13 @@
 package net.eduware.myapplication1.Activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.provider.ContactsContract;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 import net.eduware.myapplication1.Database.FeedReaderDbHelper;
 import net.eduware.myapplication1.Functions.validation;
 import net.eduware.myapplication1.R;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener {
@@ -68,28 +73,30 @@ public class MainActivity extends AppCompatActivity implements
 
     private void showMap() {
 //        Uri location = Uri.parse("geo::37.422219,-122.08364?z=14");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        //   Intent mapIntent = new Intent(Intent.ACTION_VIEW);
 //        startActivity(mapIntent);
 
-//        Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
-//        Calendar beginTime = Calendar.getInstance();
-//        beginTime.set(2012, 0, 19, 7, 30);
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.set(2012, 0, 19, 10, 30);
-//        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
-//        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
-//        calendarIntent.putExtra(CalendarContract.Events.TITLE, "Ninja class");
-//        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
-//        startActivity(calendarIntent);
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR);
 
-        String title = "new app intent";
-// Create intent to show chooser
-        Intent chooser = Intent.createChooser(mapIntent, title);
+        Intent calendarIntent = new Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI);
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2012, 0, 19, 7, 30);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2012, 0, 19, 10, 30);
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis());
+        calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis());
+        calendarIntent.putExtra(CalendarContract.Events.TITLE, "Ninja class");
+        calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "Secret dojo");
+        startActivity(calendarIntent);
 
-// Verify the intent will resolve to at least one activity
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(chooser);
-        }
+//        String title = "new app intent";
+//// Create intent to show chooser
+//        Intent chooser = Intent.createChooser(mapIntent, title);
+//
+//// Verify the intent will resolve to at least one activity
+//        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(chooser);
+//        }
     }
 
     private void pickContact() {
